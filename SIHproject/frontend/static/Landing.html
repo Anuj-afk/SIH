@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilli Yatra - Delhi Transport Corporation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #001f60;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            width: 60px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .navbar {
+            background-color: #0056b3;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: #003f82;
+        }
+        .banner {
+            background-color: #f7f7f7;
+            padding: 20px;
+            text-align: center;
+        }
+        .banner img {
+            width: 100%;
+            max-height: 300px;
+        }
+        .services {
+            padding: 20px;
+            text-align: center;
+        }
+        .services h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .service-options {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service-options div {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 30%;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .service-options img {
+            width: 100%;
+            height: auto;
+        }
+        .service-options button {
+            background-color: #001f60;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .service-options button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #001f60;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <img style="width: 200px;" src="static/dtc.jpg" alt="DTC Logo">
+        </div>
+        <div>
+            <h1>DILLI YATRA</h1>
+        </div>
+        <div>
+            <img src="static/indian emblem.jpg" alt="India Flag">
+        </div>
+    </div>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Services</a>
+        <a href="#">RTI</a>
+        <a href="#">Contact Us</a>
+    </div>
+    <div class="services">
+        <h2>Our Services</h2>
+        <div class="service-options">
+            <div>
+                <img style = "height: 500px;" src="static/bus-routes.jpg" alt="Add New Route">
+                <h3>ADD NEW ROUTE</h3>
+                <button><a href="Addroute/">Add Route</a></button>
+            </div>
+            <div>
+                <img style = "height: 500px;"src="static/manage-duties.jpg" alt="Manage Duties">
+                <h3>MANAGE DUTIES</h3>
+                <button><a href="Manageduties/">Manage Duties</a></button>
+            </div>
+            <div>
+                <img style = "height: 500px;" src="static/monitor-buses.jpg" alt="Monitor Buses">
+                <h3>MONITOR BUSES</h3>
+                <button><a href="Monitorbuses/">Monitor Buses</a></button>
+            </div>
+            <div>
+                <img style = "height: 500px;" src="static/bus-routes.jpg" alt="Add New Route">
+                <h3>ADD NEW STOP</h3>
+                <button><a href="Addstop/">Add Stop</a></button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Delhi Transport Corporation - Government of NCT of Delhi</p>
+    </div>
+
+</body>
+</html>
