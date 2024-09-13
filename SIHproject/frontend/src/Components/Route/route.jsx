@@ -6,15 +6,15 @@ const Route = () =>{
         e.preventDefault();
             const routeName = document.getElementById('routeName').value;
             const routeID = document.getElementById('routeID').value;
-            const routeQuantity = document.getElementById('routeQuantity').value;
+            const busQuantity = document.getElementById('busQuantity').value;
             const selectedCategories = Array.from(document.getElementById('routeCategory').selectedOptions)
                                             .map(option => option.value);
 
             const message = document.getElementById('message');
-            if (routeName === '' || routeID === '' || routeQuantity === '' || selectedCategories.length === 0) {
+            if (routeName === '' || routeID === '' || busQuantity === '' || selectedCategories.length === 0) {
                 message.innerHTML = "<span class='error'>Please fill out all fields and select at least one category.</span>";
             } else {
-                message.innerHTML = `Item <strong>${routeName}</strong> with ID <strong>${routeID}</strong> and quantity <strong>${routeQuantity}</strong> has been added under the following categories: <strong>${selectedCategories.join(', ')}</strong>`;
+                message.innerHTML = `Route <strong>${routeName}</strong> with ID <strong>${routeID}</strong> and Bus quantity <strong>${busQuantity}</strong> has been added with the following stops: <strong>${selectedCategories.join(', ')}</strong>`;
                 
                 // Clear form fields after successful submission
                 document.getElementById('routeForm').reset();

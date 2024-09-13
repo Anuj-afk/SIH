@@ -9,7 +9,7 @@ class BusstopInline(admin.StackedInline):
 
 
 class BusstopAdmin(admin.ModelAdmin):
-    fields = ["name", "longitude", "latitude"]
+    fields = ["name", "longitude", "latitude", 'route']
 # CarMakeAdmin class with CarModelInline
 
 
@@ -18,7 +18,7 @@ class RouteAdmin(admin.ModelAdmin):
     inlines = [BusstopInline]
 # Register models here
 
+admin.site.register(Busstop, BusstopAdmin)
 
 admin.site.register(Route, RouteAdmin)
 
-admin.site.register(Busstop, BusstopAdmin)

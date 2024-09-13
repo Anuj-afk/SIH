@@ -1,7 +1,10 @@
 import React from "react";
-
 import "./stop.css"
 const Stop = () =>{
+    //const select = document.getElementById('route');
+    //for(route in Route.objects){
+    //    select.innerHTML = `<option value="route">route</option>`
+    //}
     const sub = (e) => {
         e.preventDefault();
         const stopName = document.getElementById('stopName').value;
@@ -50,7 +53,7 @@ const Stop = () =>{
                     <input type="number" id="longval" name="longval" placeholder="Enter quantity" required></input>
                     <label for="latval">LATITUDE: </label>
                     <input type="number" id="latval" name="latval" placeholder="Enter quantity" required></input>
-                    <button type="submit">Add Route</button>
+                    <button type="submit">Add Stop</button>
                 </form>
                 <div class="message" id="message"></div>
             </div>
