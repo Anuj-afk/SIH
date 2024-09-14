@@ -5,7 +5,7 @@ const Stop = () =>{
     //for(route in Route.objects){
     //    select.innerHTML = `<option value="route">route</option>`
     //}
-    const sub = (e) => {
+    const sub = async (e) => {
         e.preventDefault();
         const stopName = document.getElementById('stopName').value;
         const longval = document.getElementById('longval').value;
@@ -14,15 +14,31 @@ const Stop = () =>{
         // Get selected categories (multiple options)
         const message = document.getElementById('message');
 
+        let url = window.location.origin + "/SIHapp/addstop";
+        const res = await fetch(url,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "name": stopName,
+                "long": longval,
+                "lat": latval,
+            }),
+        });
+        const json = await res.json();
         // Check if fields are not empty
-        if (stopName === '' || longval === '' || latval === '') {
+        if (json['added'] === false) {
             message.innerHTML = "<span class='error'>Please fill out all fields and select at least one category.</span>";
-        } else {
+        } else if(json['added'] === true){
             message.innerHTML = `Stop <strong>${stopName}</strong> with Longitude <strong>${longval}</strong> and Latitude <strong>${latval}</strong> has been added</strong>`;
             
             // Clear form fields after successful submission
             document.getElementById('itemForm').reset();
         }
+        
+        
+
     };
     return(
         <div>

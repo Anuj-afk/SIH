@@ -5,17 +5,17 @@ from .models import Busstop, Route
 class BusstopInline(admin.StackedInline):
     model = Busstop
     extra = 5
-# CarModelAdmin class
+
 
 
 class BusstopAdmin(admin.ModelAdmin):
-    fields = ["name", "longitude", "latitude", 'route']
-# CarMakeAdmin class with CarModelInline
+    fields = ["name", "longitude", "latitude"]
+
 
 
 class RouteAdmin(admin.ModelAdmin):
-    fields = ['name', 'id']
-    inlines = [BusstopInline]
+    list_display = ['name', 'id', 'bus_quantity']
+    filter_horizontal = ['bus_stop']
 # Register models here
 
 admin.site.register(Busstop, BusstopAdmin)

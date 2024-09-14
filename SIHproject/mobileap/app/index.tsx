@@ -9,12 +9,11 @@ function LoginScreen({ navigation }) {
 
   const handleLogin = () => {
     // Handle login logic here
-    sessionStorage.setItem("loginid",loginId)
     console.log('Login ID:', loginId);
     console.log('Password:', password);
 
-    // Navigate to the Dashboard screen
-    navigation.navigate('Dashboard');
+    // Navigate to the Dashboard screen and pass loginId as a parameter
+    navigation.navigate('Dashboard', { loginId });
   };
 
   return (
@@ -24,7 +23,7 @@ function LoginScreen({ navigation }) {
         <Text style={styles.dilliText}>Dilli</Text>
         <Text style={styles.yatraText}>Yatra</Text>
       </View>
-      
+
       {/* Input Fields and Button */}
       <View style={styles.inputContainer}>
         <TextInput
@@ -49,7 +48,9 @@ function LoginScreen({ navigation }) {
 }
 
 // Dashboard Screen Component
-function DashboardScreen() {
+function DashboardScreen({ route }) {
+  const { loginId } = route.params; // Get loginId from route params
+
   const handleStartRide = () => {
     // Handle start ride logic here
     console.log('Start Ride button pressed');
@@ -59,7 +60,7 @@ function DashboardScreen() {
     <SafeAreaView style={styles.dashboardContainer}>
       {/* Profile Overview Container */}
       <View style={styles.profileContainer}>
-        <Text style={styles.profileText}>{sessionStorage.getItem("loginid")}</Text>
+        <Text style={styles.profileText}>{loginId}</Text>
       </View>
 
       {/* Dashboard Content */}
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     top: 20,
     left: 10,
     backgroundColor: '#d3d3d3',
-    borderColor:'gray',
+    borderColor: 'gray',
     borderWidth: 2,
     padding: 20,
     borderRadius: 50,
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
   profileText: {
     color: 'black',
     fontSize: 16,
-    left:50,
+    alignSelf: 'center',
   },
   dashboardContent: {
     flex: 1,
@@ -178,9 +179,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     padding: 15,
     borderRadius: 15,
-    width: '80%', // Adjust width as needed
+    width: '40%', // Adjust width as needed
     alignItems: 'center',
-    marginBottom: 20, // Margin from the bottom
+    marginBottom: 30, // Margin from the bottom
   },
   startRideButtonText: {
     color: 'white',
