@@ -1,17 +1,12 @@
 import React from "react";
 import "./stop.css"
 const Stop = () =>{
-    //const select = document.getElementById('route');
-    //for(route in Route.objects){
-    //    select.innerHTML = `<option value="route">route</option>`
-    //}
+
     const sub = async (e) => {
         e.preventDefault();
         const stopName = document.getElementById('stopName').value;
         const longval = document.getElementById('longval').value;
         const latval = document.getElementById('latval').value;
-
-        // Get selected categories (multiple options)
         const message = document.getElementById('message');
 
         let url = window.location.origin + "/SIHapp/addstop";
@@ -27,13 +22,17 @@ const Stop = () =>{
             }),
         });
         const json = await res.json();
-        // Check if fields are not empty
         if (json['added'] === false) {
-            message.innerHTML = "<span class='error'>Please fill out all fields and select at least one category.</span>";
+            if(json['error'] == "Unique"){
+                message.innerHTML = "<span class='error'>Stop Name already registerd.</span>";
+            }
+            else{
+                message.innerHTML = `<span class='error'>${json["error"]}</span>`;
+            }
+            
         } else if(json['added'] === true){
             message.innerHTML = `Stop <strong>${stopName}</strong> with Longitude <strong>${longval}</strong> and Latitude <strong>${latval}</strong> has been added</strong>`;
             
-            // Clear form fields after successful submission
             document.getElementById('itemForm').reset();
         }
         
@@ -66,9 +65,9 @@ const Stop = () =>{
                     <label for="stopName">Stop Name: </label>
                     <input type="text" id="stopName" name="stopName" placeholder="Enter Route name" required></input>
                     <label for="longval">LONGITUDE: </label>
-                    <input type="number" id="longval" name="longval" placeholder="Enter quantity" required></input>
+                    <input type="number" id="longval" name="longval" placeholder="Enter quantity" step= "0.001" required></input>
                     <label for="latval">LATITUDE: </label>
-                    <input type="number" id="latval" name="latval" placeholder="Enter quantity" required></input>
+                    <input type="number" id="latval" name="latval" placeholder="Enter quantity" step= "0.001" required></input>
                     <button type="submit">Add Stop</button>
                 </form>
                 <div class="message" id="message"></div>

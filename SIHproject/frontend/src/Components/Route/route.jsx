@@ -57,11 +57,10 @@ const Route = () =>{
 
         const json = res.json();
         if (json['added'] === false) {
-            message.innerHTML = "<span class='error'>Please fill out all fields and select at least one category.</span>";
+            message.innerHTML = `<span class='error'>${json['error']}</span>`;
         } else if (json['added'] === true){
             message.innerHTML = `Route <strong>${routeName}</strong> with ID <strong>${routeID}</strong> and Bus quantity <strong>${busQuantity}</strong> has been added with the following stops: <strong>${selectedCategories.join(', ')}</strong>`;
-            
-            // Clear form fields after successful submission
+
             document.getElementById('routeForm').reset();
         }
     };

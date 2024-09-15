@@ -3,6 +3,7 @@ from .models import Busstop, Route
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.db import IntegrityError
 
 
 # Create your views here.
@@ -13,8 +14,11 @@ def add_stop(request):
         Busstop.objects.create(name = body['name'], longitude= body['long'], latitude = body['lat'])
         data = {"added": True}
         return JsonResponse(data)
-    except:
-        data = {"added": False}
+    except Exception as e:
+        if "UNIQUE constraint failed" in str(e):
+            data = {"added": False, "error": "Unique"}
+        else:
+            data = {"added": False, "error": str(e)}
         return JsonResponse(data)
 
 @csrf_exempt
@@ -26,12 +30,11 @@ def add_route(request):
         for stop in body["stops"]:
             bs = Busstop.objects.filter(name = stop)
             route.bus_stop.add(*bs)
-        
         data = {"added": True}
         return JsonResponse(data)
     except Exception as e:
         print(f"Error: {e}")
-        data = {"added": False}
+        data = {"added": False, "error": str(e)}
         return JsonResponse(data)
 
 @csrf_exempt
@@ -40,7 +43,6 @@ def get_stop(request):
         stops = Busstop.objects.all().values('name')
         data = {"stops": list(stops), "obtained": True}
         return JsonResponse(data)
-    except:
-        data = {"obtained": False}
-
+    except Exception as e:
+        data = {"obtained": False, "error": str(e)}
         return JsonResponse(data)
