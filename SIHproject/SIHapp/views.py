@@ -85,8 +85,23 @@ def get_stop(request):
         data = {"obtained": False, "error": str(e)}
         return JsonResponse(data)
 
+def get_route_id(request):
+    try:
+        route = Route.objects.all().values('id')
+        data = {"route": list(route), 'obtained': True}
+        print(route)
+        return JsonResponse(data)
+    except:
+        data = {'obtained': False}
+        return JsonResponse(data)
+
 def get_route(request):
     try:
-    
+        body = json.loads(request.body)
+        route = Route.objects.filter(id = body['id']).values('id', 'name', 'bus_stop')
+
+        data = {"route": list(route), 'obtained': True}
+        return JsonResponse(data)
     except:
-        
+        data = {'obtained': False}
+        return JsonResponse(data)
