@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Busstop, Route
+from .models import Busstop, Route, Bus
 # Register your models here.
 
 class BusstopInline(admin.StackedInline):
@@ -13,12 +13,15 @@ class BusstopAdmin(admin.ModelAdmin):
 
 
 
+class BusAdmin(admin.ModelAdmin):
+    list_display = ['id', 'plate', 'ac', 'route']
+
 class RouteAdmin(admin.ModelAdmin):
     list_display = ['name', 'id', 'bus_quantity']
     filter_horizontal = ['bus_stop']
 # Register models here
 
 admin.site.register(Busstop, BusstopAdmin)
-
+admin.site.register(Bus, BusAdmin)
 admin.site.register(Route, RouteAdmin)
 

@@ -20,4 +20,12 @@ class Route(models.Model):
     
     def __str__(self):
         return self.name
-    
+
+class Bus(models.Model):
+    id = models.IntegerField(primary_key=True)
+    plate = models.CharField(max_length=100)
+    ac = models.BooleanField(default=False)
+    route = models.ForeignKey(Route, on_delete = models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.id)

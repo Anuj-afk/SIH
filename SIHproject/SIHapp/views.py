@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Busstop, Route
+from .models import Busstop, Route, Bus
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -30,11 +30,45 @@ def add_route(request):
         for stop in body["stops"]:
             bs = Busstop.objects.filter(name = stop)
             route.bus_stop.add(*bs)
+
+        assbus(body['quantity'], body['id'])
         data = {"added": True}
         return JsonResponse(data)
     except Exception as e:
         print(f"Error: {e}")
         data = {"added": False, "error": str(e)}
+        return JsonResponse(data)
+
+
+@csrf_exempt
+def assbus(quantity, rid):
+    buses = Bus.objects.filter(route = None)
+    rou = Route.objects.filter(id = rid)
+    if len(bus) >= quantity:
+        for bus in buses[:quantity]:
+            bus.route = rou
+            bus.save()
+    else:
+        print("not enough buses")
+
+
+@csrf_exempt
+def addbus(request):
+    try:
+
+        body = json.loads(request.body)
+        if body['ac'] == "on":
+            Bus.objects.create(id = body['id'], plate= body['plate'], ac = True)
+        else:
+            Bus.objects.create(id = body['id'], plate= body['plate'], ac = False)
+        data = {"added": True}
+        return JsonResponse(data)
+    except Exception as e:
+        print(e)
+        if "UNIQUE constraint failed" in str(e):
+            data = {"added": False, "error": "Unique"}
+        else:
+            data = {"added": False, "error": str(e)}
         return JsonResponse(data)
 
 @csrf_exempt
