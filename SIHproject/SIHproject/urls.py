@@ -28,4 +28,5 @@ urlpatterns = [
     path('Addroute/', TemplateView.as_view(template_name = "index.html")),
     path('Monitorbuses/', TemplateView.as_view(template_name = "index.html")),
     path('Monitorbuses/addbus', TemplateView.as_view(template_name = "index.html")),
+    path('Showroute/', TemplateView.as_view(template_name = "index.html")),
 ]

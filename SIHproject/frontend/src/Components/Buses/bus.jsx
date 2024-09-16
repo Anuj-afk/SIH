@@ -44,6 +44,11 @@ const Bus = () =>{
             
 
         }
+
+        const fetchroute = () => {
+
+        }   
+        fetchroute();
         fetchstops();
     }, []);
     type Poi ={ key: string, location: google.maps.LatLngLiteral }

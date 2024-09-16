@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import MapView, { Marker } from 'react-native-maps';
+
 
 // Login Screen Component
 function LoginScreen({ navigation }) {
@@ -52,7 +54,6 @@ function DashboardScreen({ route }) {
   const { loginId } = route.params; // Get loginId from route params
 
   const handleStartRide = () => {
-    // Handle start ride logic here
     console.log('Start Ride button pressed');
   };
 
@@ -63,9 +64,23 @@ function DashboardScreen({ route }) {
         <Text style={styles.profileText}>{loginId}</Text>
       </View>
 
-      {/* Dashboard Content */}
-      <View style={styles.dashboardContent}>
-        <Text style={styles.dashboardText}>Dashboard</Text>
+      {/* MapView Component */}
+      <View style={styles.mapContainer}>
+        <MapView
+          style={styles.map}
+          initialRegion={{
+            latitude: 28.612894,
+            longitude: 77.229446,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        >
+          <Marker
+            coordinate={{ latitude: 28.612894, longitude: 77.229446 }}
+            title="INDIA GATE"
+            description="RAM RAM"
+          />
+        </MapView>
       </View>
 
       {/* Start Ride Button */}
@@ -186,6 +201,13 @@ const styles = StyleSheet.create({
   startRideButtonText: {
     color: 'white',
     fontSize: 16,
+  },
+  mapContainer: {
+    flex: 1,
+    width: '100%',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 
