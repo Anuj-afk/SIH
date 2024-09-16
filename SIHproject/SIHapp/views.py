@@ -77,7 +77,11 @@ def addbus(request):
 def get_stop(request):
     try: 
         stops = Busstop.objects.all().values('name')
-        data = {"stops": list(stops), "obtained": True}
+        stops1 = Busstop.objects.all().values('longitude')
+        stops2 = Busstop.objects.all().values('latitude')
+        data = {"stops": list(stops),"lat": list(stops2), "lng": list(stops1), "obtained": True}
+        print(list(stops1))
+        print(list(stops2))
         return JsonResponse(data)
     except Exception as e:
         data = {"obtained": False, "error": str(e)}

@@ -65,9 +65,9 @@ const Stop = () =>{
                     <label for="stopName">Stop Name: </label>
                     <input type="text" id="stopName" name="stopName" placeholder="Enter Route name" required></input>
                     <label for="longval">LONGITUDE: </label>
-                    <input type="number" id="longval" name="longval" placeholder="Enter quantity" step= "0.001" required></input>
+                    <input type="number" id="longval" name="longval" placeholder="Enter quantity" step= "0.000000000000000001" required></input>
                     <label for="latval">LATITUDE: </label>
-                    <input type="number" id="latval" name="latval" placeholder="Enter quantity" step= "0.001" required></input>
+                    <input type="number" id="latval" name="latval" placeholder="Enter quantity" step= "0.000000000000000001" required></input>
                     <button type="submit">Add Stop</button>
                 </form>
                 <div class="message" id="message"></div>
