@@ -25,7 +25,6 @@ def add_stop(request):
 def add_route(request):
     try:
         body = json.loads(request.body)
-        print(body['id'])
         route = Route.objects.create(name = body['name'], id = body['id'], bus_quantity = body['quantity'])
         for stop in body["stops"]:
             bs = Busstop.objects.filter(name = stop)
@@ -42,15 +41,18 @@ def add_route(request):
 
 @csrf_exempt
 def assbus(quantity, rid):
-    buses = Bus.objects.filter(route = None)
-    rou = Route.objects.filter(id = rid)
-    if len(bus) >= quantity:
-        for bus in buses[:quantity]:
-            bus.route = rou
-            bus.save()
-    else:
-        print("not enough buses")
-
+    try:
+        q = int(quantity)
+        buses = Bus.objects.filter(route = None)
+        rou = Route.objects.get(id = rid)
+        if len(buses) >= q:
+            for bus in buses[:q]:
+                bus.route = rou
+                bus.save()
+        else:
+            print("not enough buses")
+    except Exception as e:
+        print(e)
 
 @csrf_exempt
 def addbus(request):
