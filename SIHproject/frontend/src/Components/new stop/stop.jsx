@@ -43,13 +43,13 @@ const Stop = () =>{
         <div>
             <div class="header">
                 <div>
-                    <img src="E:\vs code projects\SIH\SIHproject\frontend\static\dtc.jpg" alt="DTC Logo"></img>
+                    <img src="..\..\..\static\dtc.jpg" alt="DTC Logo"></img>
                 </div>
                 <div>
                     <h1>DILLI YATRA</h1>
                 </div>
                 <div>
-                    <img src="E:\vs code projects\SIH\SIHproject\frontend\static\indian emblem.jpg" alt="India Flag"></img>
+                    <img src="..\..\..\static\indian emblem.jpg" alt="India Flag"></img>
                 </div>
             </div>
             <div class="navbar">

@@ -68,13 +68,13 @@ const Route = () =>{
         <div>
             <div class="header">
                 <div>
-                    <img  alt="DTC Logo"></img>
+                    <img src="..\..\..\static\dtc.jpg" alt="DTC Logo"></img>
                 </div>
                 <div>
                     <h1>DILLI YATRA</h1>
                 </div>
                 <div>
-                    <img  alt="India Flag"></img>
+                    <img src="..\..\..\static\indian emblem.jpg" alt="India Flag"></img>
                 </div>
             </div>
             <div class="navbar">
