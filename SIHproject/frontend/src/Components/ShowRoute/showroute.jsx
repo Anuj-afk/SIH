@@ -130,7 +130,7 @@ const Showroute = () =>{
         <div class="grid_container">
         
         <div class="content">
-            <APIProvider apiKey={'AIzaSyDedFcd_BUni7Ax0VjAwB8ur_1yjZOzTsQ'} onLoad={() => console.log('Maps API has loaded.')}>
+            <APIProvider apiKey={'AIzaSyCCwCqtTi05ELO7LTiKAdrb8PWriqaq1AM'} onLoad={() => console.log('Maps API has loaded.')}>
                 <Map
                     defaultZoom={13}
                     defaultCenter={ { lat: 28.639374, lng: 77.226510 } }

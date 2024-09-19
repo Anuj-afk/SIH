@@ -23,7 +23,7 @@ const addbus = () => {
             })
         })
 
-        const json = res.json();
+        const json = await res.json();
         console.log(json['error'])
         if (json['added'] === false) {
             if(json['error'] == "Unique"){

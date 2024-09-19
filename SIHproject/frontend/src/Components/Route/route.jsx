@@ -55,10 +55,12 @@ const Route = () =>{
             })
         });
 
-        const json = res.json();
+        const json = await res.json();
         if (json['added'] === false) {
             message.innerHTML = `<span class='error'>${json['error']}</span>`;
-        } else if (json['added'] === true){
+        } 
+        else if (json['added'] === true){
+            console.log("error")
             message.innerHTML = `Route <strong>${routeName}</strong> with ID <strong>${routeID}</strong> and Bus quantity <strong>${busQuantity}</strong> has been added with the following stops: <strong>${selectedCategories.join(', ')}</strong>`;
 
             document.getElementById('routeForm').reset();
