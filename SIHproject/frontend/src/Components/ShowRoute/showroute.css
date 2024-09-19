@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: black;
+}
+.grid_container {
+    display: grid;
+    height: 100vh; 
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+.content {
+    grid-row: 1;
+}
+#add_new_bus_btn {
+    position: fixed; /* Fixes the button to a location on the viewport */
+    bottom: 20px; 
+    right: 20px; 
+    padding: 15px 25px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease ;
+}
+#add_new_bus_btn:hover {
+    background-color: #0056b3;
+}
+#add_new_bus_btn > a {
+    font-size: large;
+    text-decoration: none;
+    color: aliceblue;
+}
